@@ -92,10 +92,9 @@ addPosts();
 function addPosts() {
     let contPosts = document.getElementById('container');
 
+    contPosts.innerHTML = '';
     for (let key in socialPosts) {
         let {authorName, profilePicture, date, textPost, picture, numLikes} = socialPosts[key];
-        
-        // let test = "like-button";
 
         contPosts.innerHTML += `
         <div class="post">
@@ -129,14 +128,6 @@ function addPosts() {
             </div>            
         </div>`
         console.log(numLikes);
-        let buttonLikes = document.querySelector('.like-button');
-        console.log(buttonLikes);
-        for (let i = 0; i < socialPosts.length; i++) {
-                buttonLikes.addEventListener("click", function(){
-                    buttonLikes.classList.add("like-button--liked");
-                    numLikes += 1;
-                });
-        }
     }
     return contPosts;
 }
@@ -146,3 +137,20 @@ function addPosts() {
 // buttonLikes.AddEventListner("click", function() {
 //     buttonLikes.classList.add("like-button--liked");
 // });
+
+    
+let buttonsLikes = document.querySelectorAll('.js-like-button');
+
+console.log(buttonsLikes);
+
+for (let i = 0; i < buttonsLikes.length; i++) {
+    buttonsLikes[i].addEventListener("click", function() {
+        // e.preventDefault();
+        buttonsLikes[i].classList.add("like-button--liked");
+        const index = this.getAttribute('data-postid');
+        console.log(index);
+        socialPosts[index].numLikes++;
+
+        addPosts();
+    });
+}
