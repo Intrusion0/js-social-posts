@@ -49,7 +49,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '1 mese fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut.',
-        'picture' : 'https://unsplash.it/600/300?image=',
+        'picture' : '',
         'numLikes' : 10
     },
     {
@@ -65,7 +65,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '10 ore fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
-        'picture' : 'https://unsplash.it/600/300?image=',
+        'picture' : '',
         'numLikes' : 15
     },
     {
@@ -94,6 +94,9 @@ function addPosts() {
 
     for (let key in socialPosts) {
         let {authorName, profilePicture, date, textPost, picture, numLikes} = socialPosts[key];
+        
+        // let test = "like-button";
+
         contPosts.innerHTML += `
         <div class="post">
             <div class="post__header">
@@ -109,12 +112,12 @@ function addPosts() {
             </div>
             <div class="post__text">${textPost}</div>
             <div class="post__image">
-                <img src="${picture}" alt="${authorName}">
+                <img src="${picture}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${key}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -125,21 +128,21 @@ function addPosts() {
                 </div> 
             </div>            
         </div>`
+        console.log(numLikes);
+        let buttonLikes = document.querySelector('.like-button');
+        console.log(buttonLikes);
+        for (let i = 0; i < socialPosts.length; i++) {
+                buttonLikes.addEventListener("click", function(){
+                    buttonLikes.classList.add("like-button--liked");
+                    numLikes += 1;
+                });
+        }
     }
     return contPosts;
 }
 
-// for (let i = 0; i < socialPosts.length; i++) {
-//     let buttonLikes = document.querySelector(".like-button");
-//     // let counterLikes = 0;
-//     let {numLikes} = socialPosts;
-//     buttonLikes.AddEventListner("click", function() {
-//         buttonLikes.classList.add("like-button--liked");
-//     });
-// }
+// let buttonLikes = document.querySelector(".like-button");
 
-let buttonLikes = document.querySelector(".like-button");
-
-        buttonLikes.AddEventListner("click", function() {
-            buttonLikes.classList.add("like-button--liked");
-        });
+// buttonLikes.AddEventListner("click", function() {
+//     buttonLikes.classList.add("like-button--liked");
+// });
