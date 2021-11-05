@@ -27,7 +27,105 @@ numero di likes.
 
 */
 
-let contPost = document.getElementById('container');
+const socialPosts = [
+    {
+        'authorName' : 'Mario Lombardo' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '1 giorno fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 174
+    },
+    {
+        'authorName' : 'Filippo Palermo' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '20 giorni fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 95
+    },
+    {
+        'authorName' : 'Martina Catalano' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '1 mese fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 10
+    },
+    {
+        'authorName' : 'Giulia Bianco' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '3 mesi fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Et nihil ullam aut alias.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 16
+    },
+    {
+        'authorName' : 'Giuseppe Perlari' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '10 ore fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 15
+    },
+    {
+        'authorName' : 'Simone Mangione' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '5 minuti fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 49
+    },
+    {
+        'authorName' : 'Flavio Pirandello' ,
+        'profilePicture' : 'https://unsplash.it/300/300?image=',
+        'date' : '3 anni fa',
+        'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut.',
+        'picture' : 'https://unsplash.it/550/300?image=',
+        'numLikes' : 58
+    }
+];
 
-// TEST IMG CASUALE
-contPost.innerHTML += `<img src=https://unsplash.it/550/300?image=>`;
+addNewPost();
+
+// FUNZIONI
+
+function addNewPost() {
+    let contPosts = document.getElementById('container');
+
+    for (let key in socialPosts) {
+        let {authorName, profilePicture, date, textPost, picture, numLikes} = socialPosts[key];
+        contPosts.innerHTML += `
+        <div class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${profilePicture}" alt="${authorName}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${authorName}</div>
+                        <div class="post-meta__time">${date}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${textPost}</div>
+            <div class="post__image">
+                <img src="${picture}" alt="${authorName}">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${numLikes}</b> persone
+                    </div>
+                </div> 
+            </div>            
+        </div>`
+    }
+    return contPosts;
+}
