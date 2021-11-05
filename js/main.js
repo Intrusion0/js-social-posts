@@ -14,13 +14,13 @@ numero di likes.
 
 /*
 
-1. Creo un array di oggetti contenente i vari post. => const socialPosts = [{}];
-    1.2 Inserisco le varie proprietà nei singoli oggetti => {x: y ecc..};
-2. Stampo l'array di oggetti in pagina.
-    2.1 Scorro all'interno dell'array di oggetti => for in --- for (let key in socialPosts);
-    2.2 Salvo le informazioni di un oggetto in una variabile => let {x, y, z} = socialPosts[key];
-    2.3 Stampo in pagina le varie informazioni => .innerHTML +=;
-3. Creo un evento sul pulsante "Mi Piace" => pulsante.AddEventListner('click', function(){})
+--DONE  1. Creo un array di oggetti contenente i vari post. => const socialPosts = [{}];
+    --DONE  1.2 Inserisco le varie proprietà nei singoli oggetti => {x: y ecc..};
+-DONE   2. Stampo l'array di oggetti in pagina.
+    --DONE  2.1 Scorro all'interno dell'array di oggetti => for in --- for (let key in socialPosts);
+    --DONE  2.2 Salvo le informazioni di un oggetto in una variabile => let {x, y, z} = socialPosts[key];
+    --DONE  2.3 Stampo in pagina le varie informazioni => .innerHTML +=;
+--DONE  3. Creo un evento sul pulsante "Mi Piace" => pulsante.AddEventListner('click', function(){})
     3.1 Al click quindi aggiungerò una classe che colorerà il pulsante => y.Classlist.add(x);
     3.2 Al click incrementerò di 1 il numero totale di "Mi Piace"; => socialPosts.likes + 1 ???;
     3.3 Una volta cliccato il pulsante una volta lo disabiliterò => x.setAttribute('disabled', true)
@@ -33,7 +33,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '1 giorno fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 174
     },
     {
@@ -41,7 +41,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '20 giorni fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 95
     },
     {
@@ -49,7 +49,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '1 mese fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 10
     },
     {
@@ -57,7 +57,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '3 mesi fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Et nihil ullam aut alias.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 16
     },
     {
@@ -65,7 +65,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '10 ore fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 15
     },
     {
@@ -73,7 +73,7 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '5 minuti fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 49
     },
     {
@@ -81,16 +81,15 @@ const socialPosts = [
         'profilePicture' : 'https://unsplash.it/300/300?image=',
         'date' : '3 anni fa',
         'textPost' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae archirecto. Et nihil ullam aut alias. Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Placeat libero ipsa nobis ipsum quibusdam quas harum ut.',
-        'picture' : 'https://unsplash.it/550/300?image=',
+        'picture' : 'https://unsplash.it/600/300?image=',
         'numLikes' : 58
     }
 ];
 
-addNewPost();
+addPosts();
 
 // FUNZIONI
-
-function addNewPost() {
+function addPosts() {
     let contPosts = document.getElementById('container');
 
     for (let key in socialPosts) {
@@ -129,3 +128,18 @@ function addNewPost() {
     }
     return contPosts;
 }
+
+// for (let i = 0; i < socialPosts.length; i++) {
+//     let buttonLikes = document.querySelector(".like-button");
+//     // let counterLikes = 0;
+//     let {numLikes} = socialPosts;
+//     buttonLikes.AddEventListner("click", function() {
+//         buttonLikes.classList.add("like-button--liked");
+//     });
+// }
+
+let buttonLikes = document.querySelector(".like-button");
+
+        buttonLikes.AddEventListner("click", function() {
+            buttonLikes.classList.add("like-button--liked");
+        });
