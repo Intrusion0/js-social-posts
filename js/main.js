@@ -21,9 +21,9 @@ numero di likes.
     --DONE  2.2 Salvo le informazioni di un oggetto in una variabile => let {x, y, z} = socialPosts[key];
     --DONE  2.3 Stampo in pagina le varie informazioni => .innerHTML +=;
 --DONE  3. Creo un evento sul pulsante "Mi Piace" => pulsante.AddEventListner('click', function(){})
-    3.1 Al click quindi aggiungerò una classe che colorerà il pulsante => y.Classlist.add(x);
-    3.2 Al click incrementerò di 1 il numero totale di "Mi Piace"; => socialPosts.likes + 1 ???;
-    3.3 Una volta cliccato il pulsante una volta lo disabiliterò => x.setAttribute('disabled', true)
+    --DONE  3.1 Al click quindi aggiungerò una classe che colorerà il pulsante => y.Classlist.add(x);
+    --DONE  3.2 Al click incrementerò di 1 il numero totale di "Mi Piace"; => socialPosts.likes + 1 ???;
+    --DONE  3.3 Una volta cliccato il pulsante una volta lo disabiliterò => x.setAttribute('disabled', true)
 
 */
 
@@ -86,12 +86,12 @@ const socialPosts = [
     }
 ];
 
+let contPosts = document.getElementById('container');
 addPosts();
 
 // FUNZIONI
 function addPosts() {
-    let contPosts = document.getElementById('container');
-
+    
     contPosts.innerHTML = '';
     for (let key in socialPosts) {
         let {authorName, profilePicture, date, textPost, picture, numLikes} = socialPosts[key];
@@ -131,26 +131,42 @@ function addPosts() {
     }
     return contPosts;
 }
-
-// let buttonLikes = document.querySelector(".like-button");
-
-// buttonLikes.AddEventListner("click", function() {
-//     buttonLikes.classList.add("like-button--liked");
-// });
-
     
-let buttonsLikes = document.querySelectorAll('.js-like-button');
-
+let buttonsLikes = document.querySelectorAll('.like-button');
 console.log(buttonsLikes);
 
-for (let i = 0; i < buttonsLikes.length; i++) {
-    buttonsLikes[i].addEventListener("click", function() {
-        // e.preventDefault();
-        buttonsLikes[i].classList.add("like-button--liked");
-        const index = this.getAttribute('data-postid');
-        console.log(index);
-        socialPosts[index].numLikes++;
+let likeCounter = document.querySelectorAll('.js-likes-counter');
+console.log(likeCounter);
 
-        addPosts();
+for (let i = 0; i < socialPosts.length; i++) {
+
+    const baseLike = socialPosts[i].numLikes;
+    buttonsLikes[i].addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (likeCounter[i].innerHTML == baseLike) {
+            socialPosts[i].numLikes++;
+            likeCounter[i].innerHTML++;
+            console.log(socialPosts[i].numLikes);
+        } else {
+            socialPosts[i].numLikes--;
+            likeCounter[i].innerHTML--;
+            console.log(socialPosts[i].numLikes);
+        }
+    
+        buttonsLikes[i].classList.toggle('like-button--liked');
     });
 }
+
+
+// VERSIONE ADRIANO E LORIS -- FUNZIONA SOLO AL PRIMO CLICK
+
+// buttonsLikes[i].addEventListener("click", function(e) {
+//     e.preventDefault();
+//     buttonsLikes[i].classList.toggle("like-button--liked");
+//     const index = this.getAttribute('data-postid');
+//     console.log(index);
+//     socialPosts[index].numLikes++;
+
+//     addPosts();
+// });
